@@ -121,7 +121,7 @@ const TradingWrapper = props => {
             breakpoints={breakpoints}
             cols={cols}
             draggableHandle=".cr-table-header__content, .pg-trading-screen__tab-panel, .draggable-container"
-            rowHeight={19}
+            rowHeight={18}
             layouts={layouts}
             onLayoutChange={() => {return;}}
             margin={[0, 0]}
