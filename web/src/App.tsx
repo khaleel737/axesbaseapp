@@ -35,7 +35,7 @@ const CustomizationContainer = React.lazy(() =>
 );
 const P2PAlertsContainer = React.lazy(() => import('./containers/P2P/P2PAlerts').then(({ P2PAlerts }) => ({ default: P2PAlerts })));
 const HeaderContainer = React.lazy(() => import('./containers/Header').then(({ Header }) => ({ default: Header })));
-const SidebarContainer = React.lazy(() => import('./containers/Sidebar').then(({ Sidebar }) => ({ default: Sidebar })));
+const SidebarContainer = React.lazy(() => import('./containers/Sidebarold').then(({ Sidebar }) => ({ default: Sidebar })));
 const LayoutContainer = React.lazy(() => import('./routes').then(({ Layout }) => ({ default: Layout })));
 
 const getTranslations = (lang: string, isMobileDevice: boolean) => {

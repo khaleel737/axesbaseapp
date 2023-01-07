@@ -30,6 +30,8 @@ import {
 } from '../../modules';
 import enIcon from 'src/assets/images/sidebar/en.svg';
 import ruIcon from 'src/assets/images/sidebar/ru.svg';
+import { Logo } from 'src/components';
+import { showLanding } from '../../api/config';
 
 interface State {
     isOpenLanguage: boolean;
@@ -72,6 +74,10 @@ class SidebarContainer extends React.Component<Props, State> {
             this.props.toggleSidebar(false);
         }
     }
+    private redirectToLanding = () => {
+        this.props.toggleSidebar(false);
+        this.props.history.push(`${showLanding() ? '/' : '/trading'}`);
+    };
 
     public render() {
         const { isLoggedIn, isActive, lang } = this.props;
@@ -86,13 +92,17 @@ class SidebarContainer extends React.Component<Props, State> {
 
         const sidebarClassName = classnames('pg-sidebar-wrapper', {
             'pg-sidebar-wrapper--active': isActive,
-            'pg-sidebar-wrapper--hidden': !isActive,
+            'pg-sidebar-wrapper--hidden': isActive,
         });
+
+       
 
         return (
             <div className={sidebarClassName}>
-                {this.renderProfileLink()}
-                <div className="pg-sidebar-wrapper-nav">{pgRoutes(isLoggedIn, this.props.abilities).map(this.renderNavItems(address))}</div>
+                 <div onClick={(e) => this.redirectToLanding()} className="pg-header__logo">
+                 <Logo />
+                </div>
+            <div className="pg-sidebar-wrapper-nav">{pgRoutes(isLoggedIn, this.props.abilities).map(this.renderNavItems(address))}
                 <div className="pg-sidebar-wrapper-lng">
                     <div className="btn-group pg-navbar__header-settings__account-dropdown dropdown-menu-language-container">
                         <Dropdown>
@@ -105,6 +115,8 @@ class SidebarContainer extends React.Component<Props, State> {
                     </div>
                 </div>
                 {this.renderLogout()}
+                {this.renderProfileLink()}
+                </div>
             </div>
         );
     }
@@ -122,6 +134,7 @@ class SidebarContainer extends React.Component<Props, State> {
         });
 
         return (
+            
             <Link to={path} key={index} onClick={handleLinkChange} className={`${isActive && 'route-selected'}`}>
                 <div className="pg-sidebar-wrapper-nav-item">
                     <div className="pg-sidebar-wrapper-nav-item-img-wrapper">
@@ -132,6 +145,8 @@ class SidebarContainer extends React.Component<Props, State> {
                     </p>
                 </div>
             </Link>
+           
+            
         );
     };
 

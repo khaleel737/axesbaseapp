@@ -29,7 +29,7 @@ export * from './ProfileVerification';
 export * from './ProfilePayment';
 export * from './RecentTrades';
 export * from './ReferralProgram';
-export * from './Sidebar';
+export * from './Sidebarold';
 export * from './ToolBar';
 export * from './TradingChart';
 export * from './WalletsFetch';
